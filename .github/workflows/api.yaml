@@ -6,7 +6,9 @@ on:
        - master
   pull_request:
     branches:
-       - master 
+       - master
+  issues:
+    types: [opened] 
   workflow_dispatch: 
 
 jobs:
@@ -22,4 +24,10 @@ jobs:
     steps:
        - name: goodbye
          run: echo "goodbye"
+         shell: bash
+  comment-with-action:
+    runs-on: ubuntu-latest
+    steps:
+       - name: "dump github context"
+         run: echo '${{ toJSON(github.event) }}' | jq
          shell: bash
